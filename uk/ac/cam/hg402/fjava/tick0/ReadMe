@@ -1,0 +1,10 @@
+This Tick involved devising an External Sort algorithm, in which we are given a file of integers that need to be sorted.
+The size of this file may be bigger than the amount of free memory available to us, so we have to be smart about the way we read and write data to disk.
+
+--
+
+I opt'd for a somewhat brute force approach to begin with, a bottom up merge sort. Then I went on to add a pass of quicksort first, so reading in chunks of the file, sorting it in memory and writing it back out to the file. This is then followed by merge from before, but starting with the bigger, already sorted chunks.
+
+In each case the use of Buffered Inputs and Outputs helps efficiency a lot as there is no "leaks" in I/O and output buffers will flush automatically when they become full. Read and Writes straight to disk would be too slow to be practical.
+
+This was an interesting task to have a go at!
